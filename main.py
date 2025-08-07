@@ -218,8 +218,9 @@ class MyApp(App):
         self.layout.remove_widget(self.btn2)
         self.putApple()
         self.putSnakeHead()
-        Window.bind(on_key_down=self.determineDirection)
         self.event=Clock.schedule_interval(self.update, 0.1)
+        Window.bind(on_key_down=self.determineDirection)
+        self.direction=""
         
 
     def btn2_clicked(self,instance):

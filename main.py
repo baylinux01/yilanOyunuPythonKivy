@@ -113,10 +113,12 @@ class MyApp(App):
         self.layout.clear_widgets()
         if(self.playAgain==True):
             self.btn1.text="Tekrar Oyna"
+        self.direction=""
         self.layout.add_widget(self.btn1)
         self.layout.add_widget(self.btn2)
-        self.__init__()  # Oyunu yeniden başlatmak için tehlikeli ama etkili
-        self.build()  
+        self.btn1.bind(on_press=self.btn1_clicked)
+        self.btn2.bind(on_press=self.btn2_clicked)
+        
         
     def checkEatItself(self):
         
@@ -214,9 +216,9 @@ class MyApp(App):
         self.gameOver=False
         self.layout.remove_widget(self.btn1)
         self.layout.remove_widget(self.btn2)
-        Window.bind(on_key_down=self.determineDirection)
         self.putApple()
         self.putSnakeHead()
+        Window.bind(on_key_down=self.determineDirection)
         self.event=Clock.schedule_interval(self.update, 0.1)
         
 
